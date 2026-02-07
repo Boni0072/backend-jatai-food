@@ -9,5 +9,23 @@ export async function POST(
 
   await WhatsAppManager.stopSession(id);
 
-  return NextResponse.json({ message: 'Sessão parada', id });
+  return NextResponse.json({ message: 'Sessão parada', id }, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  });
+}
+
+export async function OPTIONS(req: Request) {
+  return NextResponse.json({}, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  });
 }
