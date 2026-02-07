@@ -1,0 +1,12 @@
+# Dependências
+/node_modules
+
+# Variáveis de ambiente
+.env
+
+# Credenciais do Firebase (NUNCA ENVIAR!)
+firebase-service-account.json
+
+# Dados de sessão do WhatsApp-Web.js
+.wwebjs_auth/
+.wwebjs_cache/
