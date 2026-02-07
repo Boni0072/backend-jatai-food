@@ -7,8 +7,10 @@ export async function POST(
 ) {
   const { id } = params;
   try {
-    await WhatsAppManager.startSession(id);
-    return NextResponse.json({ message: 'Sessão iniciada', id }, {
+    const body = await req.json();
+    WhatsAppManager.updateConfig(id, body);
+    
+    return NextResponse.json({ success: true }, {
       status: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -17,7 +19,7 @@ export async function POST(
       },
     });
   } catch (error) {
-    return NextResponse.json({ message: 'Erro ao iniciar', error: String(error) }, {
+    return NextResponse.json({ success: false, error: String(error) }, {
       status: 500,
       headers: { 'Access-Control-Allow-Origin': '*' },
     });
